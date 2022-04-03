@@ -5,6 +5,30 @@
     <label for="hero-name">Hero name: </label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
   </div>
+
+  <div> <label>Level : </label>
+    <input  type = 'number' [(ngModel)] = 'hero.level' id = 'level' min = 1 max = 100 />
+    
+  </div>
+  <div> <label>Class : </label>
+    <select  type = 'string' [(ngModel)] = 'hero.klass' >
+      <option>Assasin</option>
+      <option>Programmer</option>>
+      <option>Magic</option>>
+      <option>Warior</option>>
+    </select>
+  </div>
+
+  <div> <label>Race :</label>
+    <select  type = 'string' [(ngModel)] = 'hero.race' >
+      <option>Human</option>
+      <option>Angel</option>>
+      <option>Demon</option>>
+      <option>Ork</option>>
+    </select>
+  </div>
+  
+
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="save()">save</button>
 </div>
