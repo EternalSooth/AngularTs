@@ -23,3 +23,19 @@ button:disabled {
   color: #ccc;
   cursor: auto;
 }
+
+.selectHero{
+
+  width: 150px;
+  height: 40px;
+ 
+}
+
+.levelHero{
+
+  width: 135px;
+}
+
+.errors{
+  color:red;
+}

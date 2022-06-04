@@ -1,30 +1,41 @@
+
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{hero.id}}</div>
+  <div *ngfor="let klass of klasses ;let i = index">{{i+1}}{{klass}}</div>
   <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
+    <label for="hero-name" >Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" #name='ngModel' placeholder='Hero name' type="text"
+    title="Разрешено использовать только пробелы и латинские буквы" pattern="^[a-zA-Z\s]+$"/>
+  </div>
+  
+
+  <div> 
+    <label>Level : </label>
+    <input class="levelHero" type='number' [(ngModel)]='hero.level' id='level' min=1 max=100 #level='ngModel' id='levelinput' />
+    <div *ngIf="level.errors?.['min']" class='errors'>
+      Cannot be negative.
+    </div>
+    <div *ngIf="level.errors?.['max']" class="errors">
+      Max is 100
+    </div>
   </div>
 
-  <div> <label>Level : </label>
-    <input  type = 'number' [(ngModel)] = 'hero.level' id = 'level' min = 1 max = 100 />
+  <div> 
+    <label>Class : </label>
+    
+    <select  class="selectHero" [(ngModel)] = 'hero.klass'>
+      <option *ngfor="let klass of klasses ;let i = index">{{i+1}}{{klass}}</option>
+      
+    </select>
     
   </div>
-  <div> <label>Class : </label>
-    <select  type = 'string' [(ngModel)] = 'hero.klass' >
-      <option>Assasin</option>
-      <option>Programmer</option>>
-      <option>Magic</option>>
-      <option>Warior</option>>
-    </select>
-  </div>
 
-  <div> <label>Race :</label>
-    <select  type = 'string' [(ngModel)] = 'hero.race' >
-      <option>Human</option>
-      <option>Angel</option>>
-      <option>Demon</option>>
-      <option>Ork</option>>
+  <div> 
+    <label>Race : </label>
+    <select  [(ngModel)] = 'hero.race' class="selectHero">
+      <option *ngfor="let race of races;let i = index">{{i+1}} {{race}}</option>
+      
     </select>
   </div>
   
@@ -32,3 +43,4 @@
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="save()">save</button>
 </div>
+

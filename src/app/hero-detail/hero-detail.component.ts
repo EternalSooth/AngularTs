@@ -15,7 +15,9 @@ export class HeroDetailComponent implements OnInit {
   hero: Hero | undefined;
 
   HEROES: Hero[] = []
-
+  
+  klass = ['Assasin','Programer','Magic','Warior']
+  race = ['Human','Angel','Demon','Ork']
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -32,6 +34,17 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
 
+  /*getClass(): void{
+    let klass = parseInt(this.route.snapshot.paramMap.get('klass')!, 10);
+    this.heroService.getHeroClass(klass).subscribe(hero => this.hero = hero);
+  }*/
+
+ /*getlevel(level: number):void{
+  let lvl = parseInt(this.route.snapshot.paramMap.get('level')!, 10);
+  this.heroService.getlevel(level).subscribe(hero => this.hero = hero);
+ }*/
+  
+
   goBack(): void {
     this.location.back();
     
@@ -43,5 +56,9 @@ export class HeroDetailComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
   }
-}
+
+  
+  }
+
+
 
